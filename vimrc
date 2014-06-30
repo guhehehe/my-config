@@ -1,3 +1,20 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+Plugin 'Valloric/YouCompleteMe'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+
+
+
 """"""""""""""""""""""""""""""""
 " basic commands
 """"""""""""""""""""""""""""""""
@@ -12,25 +29,57 @@ set background=dark      " Better color map for syntax highlighting.
 set mouse=a              " Enable mouse mode.
 set autoindent
 set splitbelow
+set cursorline
+set mouse=a
+set ttymouse=sgr         " Set the terminal mode for mouse behavior
+set tags=./tags;
+" set synmaxcol=260        " Limit syntax highlighting to avoid getting slow when highlighting long lines.
+
+set noshowmode
+set laststatus=2
+set encoding=utf-8
+set fillchars+=stl:\ ,stlnc:\
+set termencoding=utf-8
+set guifont=DejaVuSansMono\ for\ Powerline:h15
+set rtp+=/Users/hegu/.vim/bundle/powerline/bindings/vim
+
+set relativenumber
+function! NumberToggle()
+    if(&relativenumber == 1)
+        set relativenumber!
+    else
+        set relativenumber
+    endif
+endfunc
+nmap <C-x> :call NumberToggle()<cr>
+
+hi CursorLine cterm=bold ctermbg=234 guibg=Grey40
 
 " Window movement.
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-map <C-h> <C-w>h
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-l> <C-w>l
+nmap <C-h> <C-w>h
 
-map <S-s> :w<CR>
-map <S-q> :wq<CR>
-map <C-t>t :NERDTree<CR>
-map <C-t>c :NERDTreeClose<CR>
-map <C-t>f :NERDTreeFind
-map <C-t>. :NERDTreeCWD<CR>
-map <C-w>q :q!<CR>
-map <C-w>t :ConqueTermSplit bash<CR><Esc>:resize 10<CR>i
-map - <C-w>-
-map + <C-w>+
-    
-"imap <tab> <Space><Space><Space><Space>
+nmap <S-s> :w<CR>
+nmap <S-q> :wq<CR>
+nmap <C-w>q :q!<CR>
+nmap - <C-w>-
+nmap + <C-w>+
+
+" Tab movement.
+nmap <C-n> gT
+nmap <C-m> gt
+
+" NERDTree commands
+nmap <C-t>t :NERDTree<CR>
+nmap <C-t>c :NERDTreeClose<CR>
+nmap <C-t>f :NERDTreeFind
+nmap <C-t>. :NERDTreeCWD<CR>
+
+" ctags commands
+nmap <C-c>t :tags /Users/hegu/venvprojects/starmaker/gae/.git/tags
+
 imap <S-tab> <BS><BS><BS><BS>
 
 colorscheme 256-jungle
@@ -52,13 +101,14 @@ fun! s:LongLineHLToggle()
 endfunction
 
 
-
 """"""""""""""""""""""""""""""""
 " Pathogen commands
 """"""""""""""""""""""""""""""""
-execute pathogen#infect()
+" See https://github.com/tpope/vim-pathogen for more details.
+call pathogen#infect()
+call pathogen#helptags()
+syntax on
 filetype plugin indent on
-
 
 
 """"""""""""""""""""""""""""""""
@@ -73,6 +123,17 @@ filetype plugin indent on
 " let g:solarized_termtrans=1
 " colorscheme solarized
 
+
+""""""""""""""""""""""""""""""""
+" indentLine commands
+""""""""""""""""""""""""""""""""
+" See https://github.com/Yggdroot/indentLine for details.
+
+let g:indentLine_indentLevel = 10
+let g:indentLine_color_term = 237
+let g:indentLine_color_tty_light = 7
+let g:indentLine_color_tty_dark = 1
+let g:indentLine_char = '¦'
 
 
 """"""""""""""""""""""""""""""""
@@ -90,19 +151,76 @@ let g:indent_guides_start_level=1
 let g:indent_guides_guide_size=1
 
 
-
 """"""""""""""""""""""""""""""""
 " ConqueTerm commands
 """"""""""""""""""""""""""""""""
 " See https://code.google.com/p/conque/wiki/Usage for details.
 
-let g:ConqueTerm_FastMode = 1
-let g:ConqueTerm_Color = 0        " Enable terminal color.
+map <C-w>t :ConqueTermSplit bash<CR><Esc>:resize 10<CR>i
 
+let g:ConqueTerm_FastMode = 1
+
+if has("gui_running")
+    let s:uname = system("uname")
+    if s:uname == "Darwin\n"
+        set guifont=DejaVuSansMono\ for\ Powerline:h15
+    endif
+endif
+let g:ConqueTerm_Color = 0        " Enable terminal color.
 
 
 """"""""""""""""""""""""""""""""
 " python.vim commands
 """"""""""""""""""""""""""""""""
-let Python3Syntax = 0            " Disable python 3 syntax highlighting.
+let Python3Syntax = 1            " Disable python 3 syntax highlighting.
 let python_highlight_all = 1     " Highlight all.
+
+
+""""""""""""""""""""""""""""""""
+" powerLine commands
+""""""""""""""""""""""""""""""""
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
+
+let g:Powerline_symbols = 'unicode'
+let g:Powerline_symbols = 'fancy'
+
+
+if has("gui_running")
+    let s:uname = system("uname")
+    if s:uname == "Darwin\n"
+        set guifont=DejaVuSansMono\ for\ Powerline:h15
+    endif
+endif
+
+" Fix two escape to exit insert mode.
+if ! has('gui_running')
+    set ttimeoutlen=10
+    augroup FastEscape
+        autocmd!
+        au InsertEnter * set timeoutlen=0
+        au InsertLeave * set timeoutlen=1000
+    augroup END
+endif
+
+
+""""""""""""""""""""""""""""""""
+" ctrlp commands
+""""""""""""""""""""""""""""""""
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_max_files=0
+
+
+""""""""""""""""""""""""""""""""
+" tagbar commands
+""""""""""""""""""""""""""""""""
+nmap <C-b> :TagbarToggle<CR>
+let g:tagbar_autofocus = 1      " Make tagbar get focused when it is fired up.
+let g:tagbar_show_linenumbers = 1
+
+
+""""""""""""""""""""""""""""""""
+" Customized highlights 
+""""""""""""""""""""""""""""""""
+syn match Identifier " self\." 

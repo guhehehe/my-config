@@ -9,22 +9,24 @@ let python_highlight_all = 1
 let c_gnu = 1
 
 
-hi Normal       ctermfg=251         ctermbg=None        cterm=None
+hi Normal       ctermfg=250         ctermbg=None        cterm=None
 hi Cursor       ctermfg=253         ctermbg=57          cterm=None
 hi SpecialKey   ctermfg=70          ctermbg=None        cterm=None
 hi Directory    ctermfg=57          ctermbg=254         cterm=None
 hi ErrorMsg     ctermfg=160         ctermbg=245         cterm=None
-hi PreProc      ctermfg=31          ctermbg=None        cterm=Bold
+hi PreProc      ctermfg=24          ctermbg=None        cterm=Bold
 hi Search       ctermfg=125         ctermbg=None        cterm=Bold
-hi Type         ctermfg=166         ctermbg=None        cterm=Bold
-hi Statement    ctermfg=172         ctermbg=None        cterm=Bold
+" hi Type         ctermfg=166         ctermbg=None        cterm=Bold
+hi Type         ctermfg=160         ctermbg=None        cterm=Bold
+" hi Statement    ctermfg=172         ctermbg=None        cterm=Bold
+hi Statement    ctermfg=130         ctermbg=None        cterm=Bold
 hi Comment      ctermfg=239         ctermbg=None        cterm=None
-hi LineNr       ctermfg=244         ctermbg=233        cterm=None
+hi LineNr       ctermfg=244         ctermbg=234         cterm=None
 hi NonText      ctermfg=105         ctermbg=None        cterm=Bold
 hi DiffText     ctermfg=165         ctermbg=244         cterm=None
-hi Constant     ctermfg=34          ctermbg=None        cterm=None
+hi Constant     ctermfg=64          ctermbg=None        cterm=None
 hi Todo         ctermfg=162         ctermbg=None        cterm=Bold
-hi Identifier   ctermfg=142         ctermbg=None        cterm=Bold
+hi Identifier   ctermfg=172         ctermbg=None        cterm=Bold
 hi Error        ctermfg=None        ctermbg=196         cterm=Bold
 hi Special      ctermfg=172         ctermbg=None        cterm=Bold
 hi Ignore       ctermfg=221         ctermbg=None        cterm=Bold
@@ -47,4 +49,9 @@ hi VertSplit    ctermfg=239         ctermbg=239         cterm=None
 hi TabLine      ctermfg=245         ctermbg=239         cterm=None
 hi TabLineFill  ctermfg=239         ctermbg=239
 hi TabLineSel   ctermfg=104         ctermbg=236         cterm=Bold
+
+hi cusPythonOperator ctermfg=130         ctermbg=None         cterm=None
+hi cusPythonFuncArgs ctermfg=24          ctermbg=None         cterm=Bold
+hi cusPythonClsSelf  ctermfg=166         ctermbg=None         cterm=Bold
+hi cusPythonObjRef   ctermfg=124         ctermbg=None         cterm=None
 "vim: sw=4

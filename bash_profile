@@ -1,6 +1,16 @@
-# MacPorts
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-export MANPATH=/opt/local/share/man:$MANPATH
+# Some workaround for the error that cc might cause.
+export CFLAGS=-Qunused-arguments
+export CPPFLAGS=-Qunused-arguments
+
+# Starmaker dev config.
+export PATH=$PATH:~/npm/bin:~/local/bin
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/venvprojects
+export SM_GOOGLE_EMAIL_ADDRESS="he.gu@starmakerinteractive.com"
+export SM_GAE=~/venvprojects/starmaker/gae
+source /usr/local/bin/virtualenvwrapper.sh
+
+export CLICOLOR=YES
 
 # Set vi
 set -o vi
@@ -15,9 +25,21 @@ if [ "$TERM" != "dumb" ]; then
     export LS_OPTIONS='--color=auto'
 fi
 
+# Git auto completion.
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+fi
+
 # Useful aliases
-alias ls='gls $LS_OPTIONS'
-alias ll='gls $LS_OPTIONS -lhF'
-alias l='gls $LS_OPTIONS -lAhF'
+# Make MacVim default vim
+alias vi='/Applications/MacVim.app/Contents/MacOS/Vim'
+alias vim='vi'
+alias gls='gls --color=always'
+alias ls='gls'
+alias ll='gls -lhF'
+alias l='gls -lAhF'
+alias ctags='/usr/local/bin/ctags'
+
+alias activate='source /Users/hegu/venvprojects/starmaker/sm-venv/bin/activate'
 
 # Dir aliases
