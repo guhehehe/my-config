@@ -30,9 +30,11 @@ set mouse=a              " Enable mouse mode.
 set autoindent
 set splitbelow
 set cursorline
+set hlsearch
 set mouse=a
 set ttymouse=sgr         " Set the terminal mode for mouse behavior
 set tags=./tags;
+
 " set synmaxcol=260        " Limit syntax highlighting to avoid getting slow when highlighting long lines.
 
 set noshowmode
@@ -80,7 +82,17 @@ nmap <C-t>. :NERDTreeCWD<CR>
 " ctags commands
 nmap <C-c>t :tags /Users/hegu/venvprojects/starmaker/gae/.git/tags
 
-imap <S-tab> <BS><BS><BS><BS>
+inoremap <S-tab> <BS><BS><BS><BS>
+
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
+" Press Space to turn off highlighting and clear any message already
+" displayed.
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 colorscheme 256-jungle
 
@@ -101,6 +113,8 @@ fun! s:LongLineHLToggle()
 endfunction
 
 
+
+
 """"""""""""""""""""""""""""""""
 " Pathogen commands
 """"""""""""""""""""""""""""""""
@@ -109,6 +123,7 @@ call pathogen#infect()
 call pathogen#helptags()
 syntax on
 filetype plugin indent on
+
 
 
 """"""""""""""""""""""""""""""""
@@ -124,6 +139,7 @@ filetype plugin indent on
 " colorscheme solarized
 
 
+
 """"""""""""""""""""""""""""""""
 " indentLine commands
 """"""""""""""""""""""""""""""""
@@ -134,6 +150,7 @@ let g:indentLine_color_term = 237
 let g:indentLine_color_tty_light = 7
 let g:indentLine_color_tty_dark = 1
 let g:indentLine_char = '¦'
+
 
 
 """"""""""""""""""""""""""""""""
@@ -149,6 +166,7 @@ hi IndentGuidesOdd  ctermbg=240
 hi IndentGuidesEven ctermbg=235
 let g:indent_guides_start_level=1
 let g:indent_guides_guide_size=1
+
 
 
 """"""""""""""""""""""""""""""""
@@ -169,11 +187,13 @@ endif
 let g:ConqueTerm_Color = 0        " Enable terminal color.
 
 
+
 """"""""""""""""""""""""""""""""
 " python.vim commands
 """"""""""""""""""""""""""""""""
 let Python3Syntax = 1            " Disable python 3 syntax highlighting.
 let python_highlight_all = 1     " Highlight all.
+
 
 
 """"""""""""""""""""""""""""""""
@@ -205,6 +225,7 @@ if ! has('gui_running')
 endif
 
 
+
 """"""""""""""""""""""""""""""""
 " ctrlp commands
 """"""""""""""""""""""""""""""""
@@ -218,6 +239,7 @@ let g:ctrlp_max_files=0
 nmap <C-b> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1      " Make tagbar get focused when it is fired up.
 let g:tagbar_show_linenumbers = 1
+
 
 
 """"""""""""""""""""""""""""""""

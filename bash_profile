@@ -1,6 +1,7 @@
-# Some workaround for the error that cc might cause.
+# Some workaround for the error that cc might cause, due to some changes after Xcode 5.1.
 export CFLAGS=-Qunused-arguments
 export CPPFLAGS=-Qunused-arguments
+export ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future
 
 # Starmaker dev config.
 export PATH=$PATH:~/npm/bin:~/local/bin
@@ -43,3 +44,5 @@ alias ctags='/usr/local/bin/ctags'
 alias activate='source /Users/hegu/venvprojects/starmaker/sm-venv/bin/activate'
 
 # Dir aliases
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
