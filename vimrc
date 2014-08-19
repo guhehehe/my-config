@@ -34,21 +34,22 @@ set autoindent
 set splitbelow
 set cursorline
 set hlsearch
-set mouse=a
-set ttymouse=sgr         " Set the terminal mode for mouse behavior
+set ttymouse=sgr         " Set the terminal mode for mouse behavior.
 set tags=./tags;
-
-" set synmaxcol=260        " Limit syntax highlighting to avoid getting slow when highlighting long lines.
-
-set noshowmode
+set ttyfast              " You got a fast terminal, I don't know how you did it.
+set ttyscroll=3          " Wtf is this?
+set lazyredraw           " To avoid scrolling problems by buffering the screen rendering
+set synmaxcol=128        " Limit syntax highlighting to avoid getting slow when highlighting long lines.
+set noshowmode           " Don't show mode bar, since powerline does this.
 set laststatus=2
 set encoding=utf-8
 set fillchars+=stl:\ ,stlnc:\
 set termencoding=utf-8
 set guifont=DejaVuSansMono\ for\ Powerline:h15
 set rtp+=/Users/hegu/.vim/bundle/powerline/bindings/vim
-
 set relativenumber
+
+" Toggle between relative line number and absolute number.
 function! NumberToggle()
     if(&relativenumber == 1)
         set relativenumber!
@@ -56,9 +57,8 @@ function! NumberToggle()
         set relativenumber
     endif
 endfunc
-nmap <C-x> :call NumberToggle()<cr>
 
-hi CursorLine cterm=bold ctermbg=234 guibg=Grey40
+nmap <C-x> :call NumberToggle()<cr>
 
 " Window movement.
 nmap <C-j> <C-w>j

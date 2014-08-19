@@ -54,4 +54,6 @@ hi cusPythonOperator ctermfg=130         ctermbg=None         cterm=None
 hi cusPythonFuncArgs ctermfg=24          ctermbg=None         cterm=Bold
 hi cusPythonClsSelf  ctermfg=166         ctermbg=None         cterm=Bold
 hi cusPythonObjRef   ctermfg=124         ctermbg=None         cterm=None
+
+hi CursorLine cterm=bold ctermbg=234 guibg=Grey40
 "vim: sw=4
