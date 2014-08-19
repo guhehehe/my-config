@@ -7,8 +7,6 @@ export ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future
 export PATH=$PATH:~/npm/bin:~/local/bin
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/venvprojects
-export SM_GOOGLE_EMAIL_ADDRESS="he.gu@starmakerinteractive.com"
-export SM_GAE=~/venvprojects/starmaker/gae
 source /usr/local/bin/virtualenvwrapper.sh
 
 export CLICOLOR=YES

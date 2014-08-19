@@ -8,6 +8,9 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'kien/ctrlp.vim'
+Plugin 'majutsushi/tagbar.git'
+Plugin 'Yggdroot/indentLine.git'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
