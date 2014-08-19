@@ -79,17 +79,25 @@ nmap <C-t>c :NERDTreeClose<CR>
 nmap <C-t>f :NERDTreeFind
 nmap <C-t>. :NERDTreeCWD<CR>
 
+" Toggle indentLines
+nmap <c-i>i :IndentLinesToggle<CR>
+
 " ctags commands
 nmap <C-c>t :tags /Users/hegu/venvprojects/starmaker/gae/.git/tags
 
 inoremap <S-tab> <BS><BS><BS><BS>
 
+" zz lets the cursor to be placed in the middle of the screen
 nnoremap n nzz
 nnoremap N Nzz
-nnoremap * *zz
+" nnoremap * *zz
 nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
+
+" I want * to display all matches w/o cursor movement
+nnoremap * :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
+
 " Press Space to turn off highlighting and clear any message already
 " displayed.
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
@@ -154,22 +162,6 @@ let g:indentLine_char = '¦'
 
 
 """"""""""""""""""""""""""""""""
-" Indent guide commands 
-""""""""""""""""""""""""""""""""
-" See https://github.com/nathanaelkane/vim-indent-guides for details.
-" Use <Leader>ig to toggle the plugin.
-
-let g:indent_guides_auto_colors = 0
-" autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red     ctermbg=3
-" autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=  ctermbg=4
-hi IndentGuidesOdd  ctermbg=240
-hi IndentGuidesEven ctermbg=235
-let g:indent_guides_start_level=1
-let g:indent_guides_guide_size=1
-
-
-
-""""""""""""""""""""""""""""""""
 " ConqueTerm commands
 """"""""""""""""""""""""""""""""
 " See https://code.google.com/p/conque/wiki/Usage for details.
@@ -191,7 +183,6 @@ let g:ConqueTerm_Color = 0        " Enable terminal color.
 """"""""""""""""""""""""""""""""
 " python.vim commands
 """"""""""""""""""""""""""""""""
-let Python3Syntax = 1            " Disable python 3 syntax highlighting.
 let python_highlight_all = 1     " Highlight all.
 
 
@@ -202,18 +193,18 @@ let python_highlight_all = 1     " Highlight all.
 python from powerline.vim import setup as powerline_setup
 python powerline_setup()
 python del powerline_setup
-
+ 
 let g:Powerline_symbols = 'unicode'
 let g:Powerline_symbols = 'fancy'
-
-
-if has("gui_running")
-    let s:uname = system("uname")
-    if s:uname == "Darwin\n"
-        set guifont=DejaVuSansMono\ for\ Powerline:h15
-    endif
-endif
-
+" 
+" 
+" if has("gui_running")
+"     let s:uname = system("uname")
+"     if s:uname == "Darwin\n"
+"         set guifont=DejaVuSansMono\ for\ Powerline:h15
+"     endif
+" endif
+" 
 " Fix two escape to exit insert mode.
 if ! has('gui_running')
     set ttimeoutlen=10
@@ -233,12 +224,14 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_max_files=0
 
 
+
 """"""""""""""""""""""""""""""""
 " tagbar commands
 """"""""""""""""""""""""""""""""
 nmap <C-b> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1      " Make tagbar get focused when it is fired up.
 let g:tagbar_show_linenumbers = 1
+set updatetime=0
 
 
 
@@ -246,3 +239,10 @@ let g:tagbar_show_linenumbers = 1
 " Customized highlights 
 """"""""""""""""""""""""""""""""
 syn match Identifier " self\." 
+
+
+
+""""""""""""""""""""""""""""""""
+" YouCompleteMe settings
+""""""""""""""""""""""""""""""""
+let g:ycm_autoclose_preview_window_after_completion = 1
