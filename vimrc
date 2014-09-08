@@ -3,14 +3,21 @@ filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/powerline/bindings/vim
+set rtp+=~/.snippets
 call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'kien/ctrlp.vim'
-Plugin 'majutsushi/tagbar.git'
-Plugin 'Yggdroot/indentLine.git'
+Plugin 'majutsushi/tagbar'
+Plugin 'Yggdroot/indentLine'
+Plugin 'scrooloose/nerdtree.git'
+Plugin 'tpope/vim-surround.git'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -46,7 +53,6 @@ set encoding=utf-8
 set fillchars+=stl:\ ,stlnc:\
 set termencoding=utf-8
 set guifont=DejaVuSansMono\ for\ Powerline:h15
-set rtp+=/Users/hegu/.vim/bundle/powerline/bindings/vim
 set relativenumber
 
 " Toggle between relative line number and absolute number.
@@ -58,6 +64,12 @@ function! NumberToggle()
     endif
 endfunc
 
+" Map <M-j>, <M-k>, and <M-l> on Mac
+imap ∆ ''<Esc>i
+imap ˚ ""<Esc>i
+imap ¬ <Esc>wa
+
+" Toggle relative line nubmers
 nmap <C-x> :call NumberToggle()<cr>
 
 " Window movement.
@@ -130,10 +142,10 @@ endfunction
 " Pathogen commands
 """"""""""""""""""""""""""""""""
 " See https://github.com/tpope/vim-pathogen for more details.
-call pathogen#infect()
-call pathogen#helptags()
-syntax on
-filetype plugin indent on
+" call pathogen#infect()
+" call pathogen#helptags()
+" syntax on
+" filetype plugin indent on
 
 
 
@@ -169,7 +181,7 @@ let g:indentLine_char = '¦'
 """"""""""""""""""""""""""""""""
 " See https://code.google.com/p/conque/wiki/Usage for details.
 
-map <C-w>t :ConqueTermSplit bash<CR><Esc>:resize 10<CR>i
+nmap <C-w>t :ConqueTermSplit bash<CR><Esc>:resize 10<CR>i
 
 let g:ConqueTerm_FastMode = 1
 
@@ -249,3 +261,14 @@ syn match Identifier " self\."
 " YouCompleteMe settings
 """"""""""""""""""""""""""""""""
 let g:ycm_autoclose_preview_window_after_completion = 1
+
+
+
+
+""""""""""""""""""""""""""""""""
+" SnipMate settings
+""""""""""""""""""""""""""""""""
+imap <C-j> <Plug>snipMateNextOrTrigger
+smap <C-j> <Plug>snipMateNextOrTrigger
+imap <C-b> <Plug>snipMateBack
+smap <C-b> <Plug>snipMateBack

@@ -8,3 +8,7 @@ These files are the hard links of my configuration files. Their correspondence a
 | 256-jungle.vim      | ~/.vim/colors/256-jungle.vim  |
 | python.vim          | ~/.vim/syntax/python.vim      |
 | git-completion.bash | ~/.git-completion.bash        |
+
+| folder in repo      | folder in my system           |
+| ------------------- | ----------------------------- |
+| snippets            | ~/.snippets/snippets          |
