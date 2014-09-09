@@ -1,0 +1,37 @@
+snippet en
+# -*- encoding: utf-8 -*-
+endsnippet
+
+snippet for "xrange for loop"
+for ${1:i} in ${2:xrange(${3:range})}:
+	${0}
+endsnippet
+
+snippet def "function, method"
+def ${1:name}(${2:signature}):
+	"""${3:description}
+	
+	${4:detail description}
+	
+`!p
+signatures = t[2].split(',')
+lines = map(
+	lambda x: snip.mkline(
+		':' + x.strip() + ':',
+		'    ',
+	),
+	signatures,
+)
+self = snip.mkline(':self:', '    ')
+if lines and lines[0] == self:
+	snip.rv = '\n'.join(lines[1:])
+else:
+	snip.rv = '\n'.join(lines)
+`
+	"""
+	${0:function body}
+endsnippet
+
+snippet test
+	${1:some text} $1
+endsnippet
