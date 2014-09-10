@@ -1,4 +1,4 @@
-snippet en
+snippet en "python UTF-8 encoding"
 # -*- encoding: utf-8 -*-
 endsnippet
 
@@ -9,9 +9,9 @@ endsnippet
 
 snippet def "function, method"
 def ${1:name}(${2:signature}):
-	"""${3:description}
+	"""${3:function/method description}
 	
-	${4:detail description}
+	${4:detailed description}
 	
 `!p
 signatures = t[2].split(',')
@@ -22,16 +22,26 @@ lines = map(
 	),
 	signatures,
 )
-self = snip.mkline(':self:', '    ')
-if lines and lines[0] == self:
+snip >> 1
+self = snip.mkline(':self:')
+cls = snip.mkline(':cls:')
+if lines and lines[0] in (self, cls):
 	snip.rv = '\n'.join(lines[1:])
 else:
 	snip.rv = '\n'.join(lines)
+
 `
 	"""
 	${0:function body}
 endsnippet
 
 snippet test
-	${1:some text} $1
+${1:some text}    $1
+`!p
+lines = ['first line', 'second line', 'third line']
+snip.shift(1)
+for line in lines:
+	#snip.rv += '\n' + snip.mkline(line)
+	snip += line
+`
 endsnippet

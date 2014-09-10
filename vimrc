@@ -4,20 +4,23 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 set rtp+=~/.vim/bundle/powerline/bindings/vim
-set rtp+=~/.snippets
 call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'kien/ctrlp.vim'
+
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'majutsushi/tagbar'
 Plugin 'Yggdroot/indentLine'
-Plugin 'scrooloose/nerdtree.git'
-Plugin 'tpope/vim-surround.git'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-surround'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
+
+" UltiSnips
+Plugin 'SirVer/ultisnips'      " Track the engine.
+Plugin 'honza/vim-snippets'    " Snippets are separated from the engine. Add this if you want them:
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -64,9 +67,18 @@ function! NumberToggle()
     endif
 endfunc
 
-" Map <M-j>, <M-k>, and <M-l> on Mac
-imap ∆ ''<Esc>i
-imap ˚ ""<Esc>i
+" Mapping with alt key on Mac
+" <M-h> ˙
+imap ˙ ()<Esc>i
+" <M-j> ∆
+imap ∆ []<Esc>i
+" <M-k> ˚
+imap ˚ {}<Esc>i
+" <M-f> ƒ
+imap ƒ ''<Esc>i
+" <M-d> ∂
+imap ∂ ""<Esc>i
+" <M-l> ¬
 imap ¬ <Esc>wa
 
 " Toggle relative line nubmers
@@ -244,8 +256,8 @@ let g:ctrlp_max_files=0
 " tagbar commands
 """"""""""""""""""""""""""""""""
 nmap <C-b> :TagbarToggle<CR>
-let g:tagbar_autofocus = 1      " Make tagbar get focused when it is fired up.
-let g:tagbar_show_linenumbers = 1
+let g:tagbar_autofocus=1      " Make tagbar get focused when it is fired up.
+let g:tagbar_show_linenumbers=1
 set updatetime=0
 
 
@@ -260,15 +272,21 @@ syn match Identifier " self\."
 """"""""""""""""""""""""""""""""
 " YouCompleteMe settings
 """"""""""""""""""""""""""""""""
-let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_completion=1
 
 
 
 
 """"""""""""""""""""""""""""""""
-" SnipMate settings
+" UltiSnips settings
 """"""""""""""""""""""""""""""""
-imap <C-j> <Plug>snipMateNextOrTrigger
-smap <C-j> <Plug>snipMateNextOrTrigger
-imap <C-b> <Plug>snipMateBack
-smap <C-b> <Plug>snipMateBack
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<C-j>"
+let g:UltiSnipsJumpForwardTrigger="<C-k>"
+let g:UltiSnipsJumpBackwardTrigger="<C-l>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+let g:UltiSnipsSnippetsDir="~/.vim/ultisnips"
+let g:UltiSnipsUsePythonVersion=2
