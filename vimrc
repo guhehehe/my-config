@@ -288,5 +288,5 @@ let g:UltiSnipsJumpBackwardTrigger="<C-l>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
-let g:UltiSnipsSnippetsDir="~/.vim/ultisnips"
+let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
 let g:UltiSnipsUsePythonVersion=2

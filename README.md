@@ -11,4 +11,4 @@ These files are the hard links of my configuration files. Their correspondence a
 
 | folder in repo      | folder in my system           |
 | ------------------- | ----------------------------- |
-| ultisnips           | ~/.vim/ultisnips              |
+| UltiSnips           | ~/.vim/UltiSnips              |
