@@ -29,7 +29,8 @@ if lines and lines[0] in (self, cls):
 	snip.rv = '\n'.join(lines[1:])
 else:
 	snip.rv = '\n'.join(lines)
-
+snip += ''
+snip += ':return:'
 `
 	"""
 	${0:pass}
