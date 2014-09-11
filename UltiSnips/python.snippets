@@ -12,7 +12,6 @@ def ${1:name}(${2:signature}):
 	"""${3:@TODO: function/method description}
 	
 	${4:@TODO: detailed description}
-	
 `!p
 signatures = t[2].split(',')
 lines = map(
@@ -22,14 +21,15 @@ lines = map(
 	),
 	signatures,
 )
+for i, line in enumerate(lines):
+	if i == 0:
+		if line.strip() in ('::', ':self:', ':cls:'):
+			snip.rv.strip()
+			continue
+	if i == len(lines)-1:
+		line += '\n'
+	snip += line
 snip >> 1
-self = snip.mkline(':self:')
-cls = snip.mkline(':cls:')
-if lines and lines[0] in (self, cls):
-	snip.rv = '\n'.join(lines[1:])
-else:
-	snip.rv = '\n'.join(lines)
-snip += ''
 snip += ':return:'
 `
 	"""
