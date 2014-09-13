@@ -1,9 +1,11 @@
+""""""""""""""""""""""""""""""""
+" Vundle pre setup
+""""""""""""""""""""""""""""""""
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
-set rtp+=~/.vim/bundle/powerline/bindings/vim
 call vundle#begin()
 
 " let Vundle manage Vundle, required
@@ -29,9 +31,10 @@ filetype plugin indent on    " required
 
 
 """"""""""""""""""""""""""""""""
-" basic commands
+" global setup
 """"""""""""""""""""""""""""""""
 syntax enable
+colorscheme 256-jungle
 
 set nu
 set tabstop=4
@@ -67,19 +70,30 @@ function! NumberToggle()
     endif
 endfunc
 
-" Mapping with alt key on Mac
+" Mapping with alt key
 " <M-h> ˙
 imap ˙ ()<Esc>i
+imap <M-h> ()<Esc>i
+
 " <M-j> ∆
 imap ∆ []<Esc>i
+imap <M-j> []<Esc>i
+
 " <M-k> ˚
 imap ˚ {}<Esc>i
+imap <M-k> {}<Esc>i
+
 " <M-f> ƒ
 imap ƒ ''<Esc>i
+imap <M-f> ''<Esc>i
+
 " <M-d> ∂
 imap ∂ ""<Esc>i
+imap <M-d> ""<Esc>i
+
 " <M-l> ¬
-imap ¬ <Esc>wa
+inoremap ¬ <C-o>A
+inoremap <M-l> <C-o>A
 
 " Toggle relative line nubmers
 nmap <C-x> :call NumberToggle()<cr>
@@ -100,12 +114,6 @@ nmap + <C-w>+
 nmap <C-n> gT
 nmap <C-m> gt
 
-" NERDTree commands
-nmap <C-t>t :NERDTree<CR>
-nmap <C-t>c :NERDTreeClose<CR>
-nmap <C-t>f :NERDTreeFind
-nmap <C-t>. :NERDTreeCWD<CR>
-
 " Toggle indentLines
 nmap <c-i>i :IndentLinesToggle<CR>
 
@@ -124,12 +132,9 @@ nnoremap g# g#zz
 
 " I want * to display all matches w/o cursor movement
 nnoremap * :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
-
 " Press Space to turn off highlighting and clear any message already
 " displayed.
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
-
-colorscheme 256-jungle
 
 " For python programming convention only.
 " Highlighting the part after 79th character.
@@ -148,8 +153,6 @@ fun! s:LongLineHLToggle()
 endfunction
 
 
-
-
 """"""""""""""""""""""""""""""""
 " Pathogen commands
 """"""""""""""""""""""""""""""""
@@ -158,7 +161,6 @@ endfunction
 " call pathogen#helptags()
 " syntax on
 " filetype plugin indent on
-
 
 
 """"""""""""""""""""""""""""""""
@@ -174,7 +176,6 @@ endfunction
 " colorscheme solarized
 
 
-
 """"""""""""""""""""""""""""""""
 " indentLine commands
 """"""""""""""""""""""""""""""""
@@ -185,7 +186,6 @@ let g:indentLine_color_term = 237
 let g:indentLine_color_tty_light = 7
 let g:indentLine_color_tty_dark = 1
 let g:indentLine_char = '¦'
-
 
 
 """"""""""""""""""""""""""""""""
@@ -206,12 +206,10 @@ endif
 let g:ConqueTerm_Color = 0        " Enable terminal color.
 
 
-
 """"""""""""""""""""""""""""""""
 " python.vim commands
 """"""""""""""""""""""""""""""""
 let python_highlight_all = 1     " Highlight all.
-
 
 
 """"""""""""""""""""""""""""""""
@@ -243,13 +241,20 @@ if ! has('gui_running')
 endif
 
 
+""""""""""""""""""""""""""""""""
+" NERDTree commands
+""""""""""""""""""""""""""""""""
+nmap <C-t>t :NERDTree<CR>
+nmap <C-t>c :NERDTreeClose<CR>
+nmap <C-t>f :NERDTreeFind
+nmap <C-t>. :NERDTreeCWD<CR>
+
 
 """"""""""""""""""""""""""""""""
 " ctrlp commands
 """"""""""""""""""""""""""""""""
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_max_files=0
-
 
 
 """"""""""""""""""""""""""""""""
@@ -261,20 +266,18 @@ let g:tagbar_show_linenumbers=1
 set updatetime=0
 
 
-
 """"""""""""""""""""""""""""""""
 " Customized highlights 
 """"""""""""""""""""""""""""""""
 syn match Identifier " self\." 
 
 
-
 """"""""""""""""""""""""""""""""
 " YouCompleteMe settings
 """"""""""""""""""""""""""""""""
+set rtp+=~/.vim/bundle/powerline/bindings/vim
+
 let g:ycm_autoclose_preview_window_after_completion=1
-
-
 
 
 """"""""""""""""""""""""""""""""
