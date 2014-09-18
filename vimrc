@@ -52,7 +52,7 @@ set tags=./tags;
 set ttyfast              " You got a fast terminal, I don't know how you did it.
 set ttyscroll=3          " Wtf is this?
 set lazyredraw           " To avoid scrolling problems by buffering the screen rendering
-set synmaxcol=128        " Limit syntax highlighting to avoid getting slow when highlighting long lines.
+set synmaxcol=221        " Limit syntax highlighting to avoid getting slow when highlighting long lines.
 set noshowmode           " Don't show mode bar, since powerline does this.
 set laststatus=2
 set encoding=utf-8
@@ -97,6 +97,9 @@ inoremap <M-l> <C-o>A
 
 " Toggle relative line nubmers
 nmap <C-x> :call NumberToggle()<cr>
+
+" Nice JSON, this might reorder the json?
+nmap <leader>jt  <Esc>:%!python -m json.tool<CR>
 
 " Window movement.
 nmap <C-j> <C-w>j

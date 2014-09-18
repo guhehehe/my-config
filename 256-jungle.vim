@@ -15,7 +15,10 @@ hi SpecialKey   ctermfg=70          ctermbg=None        cterm=None
 hi Directory    ctermfg=57          ctermbg=254         cterm=None
 hi ErrorMsg     ctermfg=160         ctermbg=245         cterm=None
 hi PreProc      ctermfg=24          ctermbg=None        cterm=Bold
-hi Search       ctermfg=None        ctermbg=20          cterm=Bold
+" for my Ubuntu
+" hi Search       ctermfg=None        ctermbg=20          cterm=Bold
+" for my Mac
+hi Search       ctermfg=None        ctermbg=18          cterm=Bold
 " hi Type         ctermfg=166         ctermbg=None        cterm=Bold
 hi Type         ctermfg=160         ctermbg=None        cterm=Bold
 " hi Statement    ctermfg=172         ctermbg=None        cterm=Bold
@@ -55,5 +58,5 @@ hi cusPythonFuncArgs ctermfg=24          ctermbg=None         cterm=Bold
 hi cusPythonClsSelf  ctermfg=166         ctermbg=None         cterm=Bold
 hi cusPythonObjRef   ctermfg=124         ctermbg=None         cterm=None
 
-hi CursorLine cterm=bold ctermbg=234 guibg=Grey40
+hi CursorLine cterm=bold ctermbg=235 guibg=Grey40
 "vim: sw=4
