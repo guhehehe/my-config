@@ -121,7 +121,7 @@ nmap <C-m> gt
 nmap <c-i>i :IndentLinesToggle<CR>
 
 " ctags commands
-nmap <C-c>t :tags /Users/hegu/venvprojects/starmaker/gae/.git/tags
+" nmap <C-c>t :tags /Users/hegu/
 
 inoremap <S-tab> <BS><BS><BS><BS>
 
