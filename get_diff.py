@@ -34,4 +34,4 @@ rel = os.path.dirname(os.path.realpath(__file__))
 for cur, local in files:
     cur = rel + '/' + cur
     local = local.replace('~', expanduser('~'))
-    os.system('git diff %s %s' % (cur, local))
+    os.system('git diff %s %s' % (local, cur))
