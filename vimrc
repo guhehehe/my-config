@@ -113,6 +113,12 @@ nmap <C-w>q :q!<CR>
 nmap - <C-w>-
 nmap + <C-w>+
 
+" Add line above/below current line w/o moving the cursor
+nmap ø o<Esc>k
+nmap º O<Esc>j
+nmap <M-o> <Esc>k
+nmap <M-0> O<Esc>j
+
 " Tab movement.
 nmap <C-n> gT
 nmap <C-m> gt
