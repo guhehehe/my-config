@@ -1,0 +1,8 @@
+#!/bin/bash
+# This hook is sourced after every virtualenv is activated.
+
+PS1="$_OLD_VIRTUAL_PS1"
+# _OLD_RPROMPT="$RPROMPT"
+_OLD_RPROMPT="$PROMPT"
+PROMPT="╭─${user_host} ${current_dir} ${rvm_ruby} ${git_branch}
+╰─%B$%b%{${fg_bold[white]}%}(env: %{${fg[green]}%}`basename \"$VIRTUAL_ENV\"`%{${fg_bold[white]}%})%{${reset_color}%} "
