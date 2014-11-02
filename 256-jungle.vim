@@ -25,7 +25,9 @@ hi Type         ctermfg=160         ctermbg=None        cterm=Bold
 hi Statement    ctermfg=130         ctermbg=None        cterm=Bold
 hi Comment      ctermfg=239         ctermbg=None        cterm=None
 hi LineNr       ctermfg=244         ctermbg=234         cterm=None
-hi NonText      ctermfg=105         ctermbg=None        cterm=Bold
+
+" NonText control the color of line terminate symbol after set list
+hi NonText      ctermfg=244         ctermbg=None        cterm=None
 hi DiffText     ctermfg=165         ctermbg=244         cterm=None
 hi Constant     ctermfg=64          ctermbg=None        cterm=None
 hi Todo         ctermfg=162         ctermbg=None        cterm=Bold

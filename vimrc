@@ -19,6 +19,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-surround'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
+Plugin 'altercation/vim-colors-solarized'
+
 
 " UltiSnips
 Plugin 'SirVer/ultisnips'      " Track the engine.
@@ -37,6 +39,7 @@ syntax enable
 colorscheme 256-jungle
 
 set nu
+set list
 set tabstop=4
 set shiftwidth=4
 set expandtab            " Set tab to spaces.
@@ -205,6 +208,8 @@ let g:indentLine_char = '¦'
 nmap <C-w>t :ConqueTermSplit bash<CR><Esc>:resize 10<CR>i
 
 let g:ConqueTerm_FastMode = 1
+let g:ConqueTerm_TERM = 'xterm'
+let g:ConqueTerm_Color = 1        " Enable terminal color.
 
 if has("gui_running")
     let s:uname = system("uname")
@@ -212,7 +217,6 @@ if has("gui_running")
         set guifont=DejaVuSansMono\ for\ Powerline:h15
     endif
 endif
-let g:ConqueTerm_Color = 0        " Enable terminal color.
 
 
 """"""""""""""""""""""""""""""""
