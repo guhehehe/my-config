@@ -37,13 +37,13 @@ These files should be hard linked to local configuration files.
 | [bash_profile](#bash_profile)               | ~/.bashrc                     |
 | [dircolors](#dircolors)                     | ~/.dircolors/dircolors        |
 | [vimrc](#vimrc)                             | ~/.vimrc                      |
-| [256-jungle.vim](#256-jungle.vim)           | ~/.vim/colors/256-jungle.vim  |
-| [python.vim](#python.vim)                   | ~/.vim/syntax/python.vim      |
-| [git-completion.bash](#git-completion.bash) | ~/.git-completion.bash        |
-| [UltiSnips](#UltiSnips)                     | ~/.vim/UltiSnips              |
+| [256-jungle.vim](#256-junglevim)            | ~/.vim/colors/256-jungle.vim  |
+| [python.vim](#python-vim)                   | ~/.vim/syntax/python.vim      |
+| [git-completion.bash](#git-completionsh)    | ~/.git-completion.bash        |
+| [UltiSnips](#ultisnips)                     | ~/.vim/UltiSnips              |
 | [envs](#envs)                               | ~/envs                        |
 
-## `bash\_profile`
+## `bash_profile`
 This file need to be copied to both `~/.bash_profile` and `~/.bashrc`.
 
 `~/.bash_profile` is to be used by Mac's terminal.app, `~/.bashrc` is to be used on 
