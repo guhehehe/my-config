@@ -39,7 +39,6 @@ syntax enable
 colorscheme 256-jungle
 
 set nu
-set list
 set tabstop=4
 set shiftwidth=4
 set expandtab            " Set tab to spaces.
