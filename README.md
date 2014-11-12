@@ -7,17 +7,17 @@ Install Xcode and Xcode developer tools, then make sure to agree its license.
 
 These files should be hard linked to local configuration files.
 
-| file in repo        | file in my system             |
-| ------------------- | ----------------------------- |
-| [bash_profile](#bash_profile)        | ~/.bash_profile               |
-| bash_profile        | ~/.bashrc                     |
-| dircolors           | ~/.dircolors/dircolors        |
-| vimrc               | ~/.vimrc                      |
-| 256-jungle.vim      | ~/.vim/colors/256-jungle.vim  |
-| python.vim          | ~/.vim/syntax/python.vim      |
-| git-completion.bash | ~/.git-completion.bash        |
-| UltiSnips           | ~/.vim/UltiSnips              |
-| envs/\*             | ~/envs/\*                     |
+| file in repo                                | file in my system             |
+| ------------------------------------------- | ----------------------------- |
+| [bash_profile](#bash_profile)               | ~/.bash_profile               |
+| [bash_profile](#bash_profile)               | ~/.bashrc                     |
+| [dircolors](#dircolors)                     | ~/.dircolors/dircolors        |
+| [vimrc](#vimrc)                             | ~/.vimrc                      |
+| [256-jungle.vim](#256-jungle.vim)           | ~/.vim/colors/256-jungle.vim  |
+| [python.vim](#python.vim)                   | ~/.vim/syntax/python.vim      |
+| [git-completion.bash](#git-completion.bash) | ~/.git-completion.bash|
+| [UltiSnips](#UltiSnips)                     | ~/.vim/UltiSnips              |
+| [envs/\*](#envs)                            | ~/envs/\*                     |
 
 #### `bash\_profile`
 This file need to be copied to both `~/.bash_profile` and `~/.bashrc`.
@@ -37,7 +37,7 @@ A few plugins have dependencies. For YouCompleteMe, need to brew install cmake t
 
 Some other plugins need to be installed manually, these plugins are ConqueTerm, 
 
-#### `256-jungle`
+#### `256-jungle.vim`
 Vim color scheme file, then `python.vim` syntax file depends on some color definitions in this file.
 
 #### `git-completion.sh`
