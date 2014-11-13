@@ -20,6 +20,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'scrooloose/syntastic'
 
 
 " UltiSnips
@@ -36,19 +37,23 @@ filetype plugin indent on    " required
 " global setup
 """"""""""""""""""""""""""""""""
 syntax enable
+
 colorscheme 256-jungle
 
 set nu
+set relativenumber
+
+set autoindent
+set expandtab            " Set tab to spaces.
 set tabstop=4
 set shiftwidth=4
-set expandtab            " Set tab to spaces.
 set t_Co=256             " More colorful syntax highlighting.
 set background=dark      " Better color map for syntax highlighting.
 set mouse=a              " Enable mouse mode.
-set autoindent
 set splitbelow
 set cursorline
-set hlsearch
+set hlsearch             " Highlight search.
+set incsearch            " Search as you type.
 set ttymouse=sgr         " Set the terminal mode for mouse behavior.
 set tags=./tags;
 set ttyfast              " You got a fast terminal, I don't know how you did it.
@@ -56,12 +61,13 @@ set ttyscroll=3          " Wtf is this?
 set lazyredraw           " To avoid scrolling problems by buffering the screen rendering
 set synmaxcol=221        " Limit syntax highlighting to avoid getting slow when highlighting long lines.
 set noshowmode           " Don't show mode bar, since powerline does this.
+set smartcase            " Case insensitive if search term is all lowercase.
+set pastetoggle=<F2>
 set laststatus=2
 set encoding=utf-8
 set fillchars+=stl:\ ,stlnc:\
 set termencoding=utf-8
 set guifont=DejaVuSansMono\ for\ Powerline:h15
-set relativenumber
 
 " Toggle between relative line number and absolute number.
 function! NumberToggle()
@@ -71,6 +77,8 @@ function! NumberToggle()
         set relativenumber
     endif
 endfunc
+
+let mapleader=","
 
 " Mapping with alt key
 " <M-h> ˙
@@ -124,6 +132,9 @@ nmap <M-0> O<Esc>j
 " Tab movement.
 nmap <C-n> gT
 nmap <C-m> gt
+
+nmap <silent> <leader>ev :e ~/.vimrc<CR>
+nmap <silent> <leader>sv :so ~/.vimrc<CR>
 
 " Toggle indentLines
 nmap <c-i>i :IndentLinesToggle<CR>
