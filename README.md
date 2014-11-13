@@ -1,8 +1,6 @@
 My configurations for mac
 =====================
 
-[TOC]
-
 
 # Softwares To Install
 
