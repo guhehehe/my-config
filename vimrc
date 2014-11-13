@@ -25,10 +25,11 @@ Plugin 'scrooloose/syntastic'
 
 " UltiSnips
 Plugin 'SirVer/ultisnips'      " Track the engine.
-Plugin 'honza/vim-snippets'    " Snippets are separated from the engine. Add this if you want them:
+Plugin 'honza/vim-snippets'    " Snippets are separated from the engine.
+                               " Add this if you want them:
 
-call vundle#end()            " required
-filetype plugin indent on    " required
+call vundle#end()              " required
+filetype plugin indent on      " required
 
 
 
@@ -39,6 +40,7 @@ filetype plugin indent on    " required
 syntax enable
 
 colorscheme 256-jungle
+au FocusLost * :wa       " Save file when losing focus.
 
 set nu
 set relativenumber
@@ -52,16 +54,23 @@ set background=dark      " Better color map for syntax highlighting.
 set mouse=a              " Enable mouse mode.
 set splitbelow
 set cursorline
+set showmatch
 set hlsearch             " Highlight search.
 set incsearch            " Search as you type.
 set ttymouse=sgr         " Set the terminal mode for mouse behavior.
 set tags=./tags;
-set ttyfast              " You got a fast terminal, I don't know how you did it.
+set ttyfast              " Fast terminal? I don't know how you did it.
 set ttyscroll=3          " Wtf is this?
-set lazyredraw           " To avoid scrolling problems by buffering the screen rendering
-set synmaxcol=221        " Limit syntax highlighting to avoid getting slow when highlighting long lines.
+set lazyredraw           " Avoid scrolling problems by buffering the screen
+                         " rendering
+set synmaxcol=221        " Limit syntax highlighting to avoid getting slow
+                         " when highlighting long lines.
 set noshowmode           " Don't show mode bar, since powerline does this.
-set smartcase            " Case insensitive if search term is all lowercase.
+set ignorecase           " Together with smartcase to make search case 
+set smartcase            " insensitive if search term is all lowercase.
+set wrap
+set textwidth=79
+set colorcolumn=80
 set pastetoggle=<F2>
 set laststatus=2
 set encoding=utf-8
@@ -142,7 +151,7 @@ nmap <c-i>i :IndentLinesToggle<CR>
 " ctags commands
 " nmap <C-c>t :tags /Users/hegu/
 
-inoremap <S-tab> <BS><BS><BS><BS>
+nnoremap ; :
 
 " zz lets the cursor to be placed in the middle of the screen
 nnoremap n nzz
@@ -191,7 +200,8 @@ endfunction
 " See https://github.com/altercation/vim-colors-solarized/blob/master/README.mkd 
 " for details.
 
-" let g:solarized_termcolors=256 " Only if you don't want to use solarized shell color.
+" let g:solarized_termcolors=256 " Only if you don't want to use solarized 
+" shell color.
 " let g:solarized_contrast
 " let g:solarized_visibility
 " let g:solarized_termtrans=1
