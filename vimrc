@@ -76,7 +76,6 @@ set laststatus=2
 set encoding=utf-8
 set fillchars+=stl:\ ,stlnc:\
 set termencoding=utf-8
-set guifont=DejaVuSansMono\ for\ Powerline:h15
 
 let mapleader=","
 
@@ -106,26 +105,30 @@ inoremap ¬ <C-o>A
 inoremap <M-l> <C-o>A
 
 " Toggle between relative line number and absolute number.
-nmap <C-x> :call NumberToggle()<cr>
+nmap ≈ :call NumberToggle()<cr>
 function! NumberToggle()
     if(&relativenumber == 1)
         set relativenumber!
+        echo "relative line number is off"
     else
         set relativenumber
+        echo "relative line number is on"
     endif
 endfunc
 
 " Toggle between relative line number and absolute number.
-nmap <C-c> :call ColorColumnToggle()<cr>
+nmap ç :call ColorColumnToggle()<cr>
 function! ColorColumnToggle()
     if(&colorcolumn == 80)
         set colorcolumn=0
+        echo "color column is off"
     else
         set colorcolumn=80
+        echo "color column is on"
     endif
 endfunc
 
-" Nice JSON, this might reorder the json?
+" Format json file
 nmap <leader>jt  <Esc>:%!python -m json.tool<CR>
 
 " Window movement.
@@ -175,22 +178,6 @@ nnoremap * :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 " displayed.
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
-" For python programming convention only.
-" Highlighting the part after 79th character.
-nnoremap <Leader>H :call<SID>LongLineHLToggle()<cr>
-hi OverLength ctermbg=none cterm=none
-match OverLength /\%>79v/
-fun! s:LongLineHLToggle()
-    if !exists('w:longlinehl')
-        let w:longlinehl = matchadd('ErrorMsg', '.\%>80v', 0)
-        echo "Long lines highlighted"
-    else
-        call matchdelete(w:longlinehl)
-        unl w:longlinehl
-        echo "Long lines unhighlighted"
-    endif
-endfunction
-
 
 """"""""""""""""""""""""""""""""
 " Pathogen commands
@@ -205,7 +192,8 @@ endfunction
 """"""""""""""""""""""""""""""""
 " Solarized commands
 """"""""""""""""""""""""""""""""
-" See https://github.com/altercation/vim-colors-solarized/blob/master/README.mkd 
+" See
+" https://github.com/altercation/vim-colors-solarized/blob/master/README.mkd 
 " for details.
 
 " let g:solarized_termcolors=256 " Only if you don't want to use solarized 
@@ -238,13 +226,6 @@ nmap <C-w>t :ConqueTermSplit bash<CR><Esc>:resize 10<CR>i
 let g:ConqueTerm_FastMode = 1
 let g:ConqueTerm_TERM = 'xterm'
 let g:ConqueTerm_Color = 1        " Enable terminal color.
-
-if has("gui_running")
-    let s:uname = system("uname")
-    if s:uname == "Darwin\n"
-        set guifont=DejaVuSansMono\ for\ Powerline:h15
-    endif
-endif
 
 
 """"""""""""""""""""""""""""""""
@@ -324,7 +305,8 @@ let g:ycm_autoclose_preview_window_after_completion=1
 """"""""""""""""""""""""""""""""
 " UltiSnips settings
 """"""""""""""""""""""""""""""""
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+" Trigger configuration. Do not use <tab> if you use
+" https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<C-j>"
 let g:UltiSnipsJumpForwardTrigger="<C-k>"
 let g:UltiSnipsJumpBackwardTrigger="<C-l>"
