@@ -154,7 +154,7 @@ nmap <silent> <leader>ev :e ~/.vimrc<CR>
 nmap <silent> <leader>sv :so ~/.vimrc<CR>
 
 " Toggle indentLines
-nmap <c-i>i :IndentLinesToggle<CR>
+nmap <C-i> :IndentLinesToggle<CR>
 
 " ctags commands
 " nmap <C-c>t :tags /Users/hegu/
