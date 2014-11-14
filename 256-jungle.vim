@@ -18,7 +18,7 @@ hi PreProc      ctermfg=24          ctermbg=None        cterm=Bold
 " for my Ubuntu
 " hi Search       ctermfg=None        ctermbg=20          cterm=Bold
 " for my Mac
-hi Search       ctermfg=None        ctermbg=19         cterm=Bold
+hi Search       ctermfg=None        ctermbg=19          cterm=Bold
 " hi Type         ctermfg=160         ctermbg=None        cterm=Bold
 hi Type         ctermfg=red         ctermbg=None        cterm=Bold
 hi Statement    ctermfg=130         ctermbg=None        cterm=Bold
@@ -54,12 +54,17 @@ hi TabLine      ctermfg=245         ctermbg=239         cterm=None
 hi TabLineFill  ctermfg=239         ctermbg=239
 hi TabLineSel   ctermfg=104         ctermbg=236         cterm=Bold
 
+hi CursorLine   cterm=bold ctermbg=235
+hi ColorColumn  ctermbg=235
+
+" Customized settings.
+hi ExtraWhitespace ctermbg=red
+match ExtraWhitespace /\s\+$/
+
 hi cusPythonOperator ctermfg=130         ctermbg=None         cterm=None
 hi cusPythonFuncArgs ctermfg=24          ctermbg=None         cterm=Bold
 hi cusPythonClsSelf  ctermfg=166         ctermbg=None         cterm=Bold
 hi cusPythonObjRef   ctermfg=124         ctermbg=None         cterm=None
 
-hi CursorLine cterm=bold ctermbg=235 guibg=Grey40
-hi ExtraWhitespace ctermbg=red
-match ExtraWhitespace /\s\+$/
+
 "vim: sw=4
