@@ -31,7 +31,7 @@ hi DiffText     ctermfg=165         ctermbg=244         cterm=None
 hi Constant     ctermfg=64          ctermbg=None        cterm=None
 hi Todo         ctermfg=162         ctermbg=None        cterm=Bold
 hi Identifier   ctermfg=172         ctermbg=None        cterm=Bold
-hi Error        ctermfg=None        ctermbg=196         cterm=Bold
+hi Error        ctermfg=None        ctermbg=red         cterm=Bold
 hi Special      ctermfg=172         ctermbg=None        cterm=Bold
 hi Ignore       ctermfg=221         ctermbg=None        cterm=Bold
 hi Underline    ctermfg=147         ctermbg=None        cterm=None
