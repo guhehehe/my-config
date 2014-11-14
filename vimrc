@@ -78,15 +78,6 @@ set fillchars+=stl:\ ,stlnc:\
 set termencoding=utf-8
 set guifont=DejaVuSansMono\ for\ Powerline:h15
 
-" Toggle between relative line number and absolute number.
-function! NumberToggle()
-    if(&relativenumber == 1)
-        set relativenumber!
-    else
-        set relativenumber
-    endif
-endfunc
-
 let mapleader=","
 
 " Mapping with alt key
@@ -114,8 +105,25 @@ imap <M-d> ""<Esc>i
 inoremap ¬ <C-o>A
 inoremap <M-l> <C-o>A
 
-" Toggle relative line nubmers
+" Toggle between relative line number and absolute number.
 nmap <C-x> :call NumberToggle()<cr>
+function! NumberToggle()
+    if(&relativenumber == 1)
+        set relativenumber!
+    else
+        set relativenumber
+    endif
+endfunc
+
+" Toggle between relative line number and absolute number.
+nmap <C-c> :call ColorColumnToggle()<cr>
+function! ColorColumnToggle()
+    if(&colorcolumn == 80)
+        set colorcolumn=0
+    else
+        set colorcolumn=80
+    endif
+endfunc
 
 " Nice JSON, this might reorder the json?
 nmap <leader>jt  <Esc>:%!python -m json.tool<CR>
