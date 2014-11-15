@@ -29,17 +29,19 @@ My configurations for mac
 
 These files should be hard linked to local configuration files.
 
-| file in repo                                | file in my system             |
-| ------------------------------------------- | ----------------------------- |
-| [bash_profile](#bash_profile)               | ~/.bash_profile               |
-| [bash_profile](#bash_profile)               | ~/.bashrc                     |
-| [dircolors](#dircolors)                     | ~/.dircolors/dircolors        |
-| [vimrc](#vimrc)                             | ~/.vimrc                      |
-| [256-jungle.vim](#256-junglevim)            | ~/.vim/colors/256-jungle.vim  |
-| [python.vim](#python-vim)                   | ~/.vim/syntax/python.vim      |
-| [git-completion.bash](#git-completionsh)    | ~/.git-completion.bash        |
-| [UltiSnips](#ultisnips)                     | ~/.vim/UltiSnips              |
-| [envs](#envs)                               | ~/envs                        |
+| file in repo                              | file in my system               |
+| ----------------------------------------- | ------------------------------- |
+| [bash_profile](#bash_profile)             | ~/.bash_profile                 |
+| [bash_profile](#bash_profile)             | ~/.bashrc                       |
+| [dircolors](#dircolors)                   | ~/.dircolors/dircolors          |
+| [vimrc](#vimrc)                           | ~/.vimrc                        |
+| [256-jungle.vim](#256-junglevim)          | ~/.vim/colors/256-jungle.vim    |
+| [python.vim](#python-vim)                 | ~/.vim/syntax/python.vim        |
+| [git-completion.bash](#git-completionsh)  | ~/.git-completion.bash          |
+| [UltiSnips](#ultisnips)                   | ~/.vim/UltiSnips                |
+| [envs](#envs)                             | ~/envs                          |
+| zsh/themes/fabulous.zsh-theme             | ~/zsh/themes/fabulous.zsh-theme |
+| zsh/zshrc                                 | ~/.zshrc                        |
 
 ## `bash_profile`
 This file need to be copied to both `~/.bash_profile` and `~/.bashrc`.
