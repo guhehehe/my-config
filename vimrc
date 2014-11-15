@@ -64,6 +64,8 @@ set synmaxcol=221        " Limit syntax highlighting to avoid getting slow
 set noshowmode           " Don't show mode bar, since powerline does this.
 set ignorecase           " Together with smartcase to make search case
 set smartcase            " insensitive if search term is all lowercase.
+set visualbell           " don't beep
+set noerrorbells         " don't beep
 set wrap
 set textwidth=79
 set colorcolumn=80
