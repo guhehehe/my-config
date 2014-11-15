@@ -11,7 +11,6 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
-
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'majutsushi/tagbar'
 Plugin 'Yggdroot/indentLine'
@@ -22,7 +21,6 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/syntastic'
 
-
 " UltiSnips
 Plugin 'SirVer/ultisnips'      " Track the engine.
 Plugin 'honza/vim-snippets'    " Snippets are separated from the engine.
@@ -30,8 +28,6 @@ Plugin 'honza/vim-snippets'    " Snippets are separated from the engine.
 
 call vundle#end()              " required
 filetype plugin indent on      " required
-
-
 
 
 """"""""""""""""""""""""""""""""
@@ -66,7 +62,7 @@ set lazyredraw           " Avoid scrolling problems by buffering the screen
 set synmaxcol=221        " Limit syntax highlighting to avoid getting slow
                          " when highlighting long lines.
 set noshowmode           " Don't show mode bar, since powerline does this.
-set ignorecase           " Together with smartcase to make search case 
+set ignorecase           " Together with smartcase to make search case
 set smartcase            " insensitive if search term is all lowercase.
 set wrap
 set textwidth=79
@@ -240,18 +236,10 @@ let python_highlight_all = 1     " Highlight all.
 python from powerline.vim import setup as powerline_setup
 python powerline_setup()
 python del powerline_setup
- 
+
 let g:Powerline_symbols = 'unicode'
 let g:Powerline_symbols = 'fancy'
-" 
-" 
-" if has("gui_running")
-"     let s:uname = system("uname")
-"     if s:uname == "Darwin\n"
-"         set guifont=DejaVuSansMono\ for\ Powerline:h15
-"     endif
-" endif
-" 
+
 " Fix two escape to exit insert mode.
 if ! has('gui_running')
     set ttimeoutlen=10
@@ -289,9 +277,9 @@ set updatetime=0
 
 
 """"""""""""""""""""""""""""""""
-" Customized highlights 
+" Customized highlights
 """"""""""""""""""""""""""""""""
-syn match Identifier " self\." 
+syn match Identifier " self\."
 
 
 """"""""""""""""""""""""""""""""
