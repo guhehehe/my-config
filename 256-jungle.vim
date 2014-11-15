@@ -57,6 +57,6 @@ match ExtraWhitespace /\s\+$/
 hi cusPythonOperator  ctermfg=130     ctermbg=None    cterm=None
 hi cusPythonFuncArgs  ctermfg=24      ctermbg=None    cterm=Bold
 hi cusPythonClsSelf   ctermfg=166     ctermbg=None    cterm=Bold
-hi cusPythonObjRef    ctermfg=124     ctermbg=None    cterm=None
+hi cusPythonObjRef    ctermfg=9       ctermbg=None    cterm=None
 
 "vim: sw=4
