@@ -35,7 +35,18 @@ filetype plugin indent on      " required
 """"""""""""""""""""""""""""""""
 syntax enable
 
-colorscheme 256-jungle
+if has('gui_running')
+    set background=light
+    set guifont=Dejavu\ Sans\ Mono\ for\ Powerline:h13
+    colorscheme solarized
+    let g:solarized_contrast
+    let g:solarized_visibility
+    let g:solarized_termtrans=1
+else
+    set background=dark
+    colorscheme 256-jungle
+endif
+
 au FocusLost * :wa       " Save file when losing focus.
 
 set nu
@@ -175,31 +186,6 @@ nnoremap * :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 " Press Space to turn off highlighting and clear any message already
 " displayed.
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
-
-
-""""""""""""""""""""""""""""""""
-" Pathogen commands
-""""""""""""""""""""""""""""""""
-" See https://github.com/tpope/vim-pathogen for more details.
-" call pathogen#infect()
-" call pathogen#helptags()
-" syntax on
-" filetype plugin indent on
-
-
-""""""""""""""""""""""""""""""""
-" Solarized commands
-""""""""""""""""""""""""""""""""
-" See
-" https://github.com/altercation/vim-colors-solarized/blob/master/README.mkd 
-" for details.
-
-" let g:solarized_termcolors=256 " Only if you don't want to use solarized 
-" shell color.
-" let g:solarized_contrast
-" let g:solarized_visibility
-" let g:solarized_termtrans=1
-" colorscheme solarized
 
 
 """"""""""""""""""""""""""""""""
