@@ -51,13 +51,8 @@ snip += ':return:'
 endsnippet
 
 
-snippet test
-${1:some text}    $1
-`!p
-lines = ['first line', 'second line', 'third line']
-snip.shift(1)
-for line in lines:
-	#snip.rv += '\n' + snip.mkline(line)
-	snip += line
-`
+snippet test "insert temporary code block for testing"
+# TODO: This block is for test purpose, need to be removed after test. #######
+${1:test code block}
+##############################################################################
 endsnippet
