@@ -11,6 +11,7 @@ ZSH_THEME="rkj-repos"
 ZSH_THEME="gnzh"
 ZSH_THEME="sorin"
 ZSH_THEME="xiong-chiamiov-plus"
+ZSH_THEME="fabulous"
 
 # Which plugins would you like to load? (plugins can be found in
 # ~/.oh-my-zsh/plugins/*)
