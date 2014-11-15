@@ -1,5 +1,5 @@
 " Vim color file
-" Maintainer:    Piotr Husiatyński <phusiatynski@gmail.com>
+" Maintainer: He Gu
 
 set background=dark
 set t_Co=256
@@ -10,9 +10,11 @@ let c_gnu = 1
 
 
 hi Normal       ctermfg=248         ctermbg=None        cterm=None
+hi Title        ctermfg=64          ctermbg=None        cterm=None
 hi Cursor       ctermfg=253         ctermbg=57          cterm=None
+hi CursorLine   cterm=bold          ctermbg=235
 hi SpecialKey   ctermfg=70          ctermbg=None        cterm=None
-hi Directory    ctermfg=57          ctermbg=254         cterm=None
+hi Directory    ctermfg=24          ctermbg=None        cterm=Bold
 hi ErrorMsg     ctermfg=160         ctermbg=245         cterm=None
 hi PreProc      ctermfg=24          ctermbg=None        cterm=Bold
 " for my Ubuntu
@@ -54,10 +56,11 @@ hi TabLine      ctermfg=245         ctermbg=239         cterm=None
 hi TabLineFill  ctermfg=239         ctermbg=239
 hi TabLineSel   ctermfg=104         ctermbg=236         cterm=Bold
 
-hi CursorLine   cterm=bold ctermbg=235
 hi ColorColumn  ctermbg=235
 
-" Customized settings.
+"""""""""""""""""""""""""""""""""
+"      Customized settings.     "
+"""""""""""""""""""""""""""""""""
 hi ExtraWhitespace ctermbg=red
 match ExtraWhitespace /\s\+$/
 
@@ -65,6 +68,5 @@ hi cusPythonOperator ctermfg=130         ctermbg=None         cterm=None
 hi cusPythonFuncArgs ctermfg=24          ctermbg=None         cterm=Bold
 hi cusPythonClsSelf  ctermfg=166         ctermbg=None         cterm=Bold
 hi cusPythonObjRef   ctermfg=124         ctermbg=None         cterm=None
-
 
 "vim: sw=4
