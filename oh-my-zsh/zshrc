@@ -93,7 +93,7 @@ function show_git_prompt() {
     _b="$FX[reset]$FG[136]$FX[bold]"  # Branch
     _g="$FX[reset]$FG[130]$FX[bold]"  # git
 
-    _branch=$(command git branch 2> /dev/null | awk '{print $2}')
+    _branch="$(command git rev-parse --abbrev-ref HEAD 2> /dev/null)"
     _statuses="$(command git status --porcelain 2> /dev/null |\
         awk '{print $1}' | uniq)"
     _statuses=("${(f)_statuses}")   # Split new lines
