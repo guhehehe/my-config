@@ -77,7 +77,6 @@ set ignorecase           " Together with smartcase to make search case
 set smartcase            " insensitive if search term is all lowercase.
 set visualbell           " don't beep
 set noerrorbells         " don't beep
-set wrap
 set textwidth=79
 set colorcolumn=80
 set pastetoggle=<F2>
@@ -183,6 +182,7 @@ nnoremap g# g#zz
 " Display all matches w/o cursor movement
 nnoremap * :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 " Used in combination with `*` to replace highlighted text
+" FIXME: Highlighted text is case insensitive, need to fix this
 nnoremap • :%s//
 " Press Space to turn off highlighting and clear any message already
 " displayed.

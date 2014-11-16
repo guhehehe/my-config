@@ -18,7 +18,7 @@ ZSH_THEME="fabulous"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+# plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -83,3 +83,39 @@ set -o vi
 
 # Set terminal dir colors
 eval `dircolors ~/.dircolors/dircolors`
+
+function show_git_prompt() {
+    _m="$FX[reset]$FG[064]M"          # Modification
+    _u="$FX[reset]$FG[009]+"          # Untracked files
+    _r="$FX[reset]$FG[130]R"          # Rename
+    _d="$FX[reset]$FG[009]D"          # Deletion
+    _o="$FX[reset]$FG[244]$FX[bold]|" # Status delimiter
+    _b="$FX[reset]$FG[136]$FX[bold]"  # Branch
+    _g="$FX[reset]$FG[130]$FX[bold]"  # git
+
+    _branch=$(command git branch 2> /dev/null | awk '{print $2}')
+    _statuses="$(command git status --porcelain 2> /dev/null |\
+        awk '{print $1}' | uniq)"
+    _statuses=("${(f)_statuses}")   # Split new lines
+    for _stat in ${_statuses}; do
+        _status="${_status}${_stat}"
+    done
+
+    if [[ ! -z ${_branch} ]]; then
+        git_prompt="${_g}git:(${_b}${_branch}${_g})"
+    fi
+    if [[ "${_status}" == *"??"* ]]; then
+        git_prompt="${git_prompt}${_o}${_u}"
+    fi
+    if [[ "${_status}" == *M* ]]; then
+        git_prompt="${git_prompt}${_o}${_m}"
+    fi
+    if [[ "${_status}" == *D* ]]; then
+        git_prompt="${git_prompt}${_o}${_d}"
+    fi
+    if [[ "${_status}" == *R* ]]; then
+        git_prompt="${git_prompt}${_o}${_r}"
+    fi
+
+    echo ${git_prompt}
+}
