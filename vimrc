@@ -176,13 +176,14 @@ nnoremap ; :
 " zz lets the cursor to be placed in the middle of the screen
 nnoremap n nzz
 nnoremap N Nzz
-" nnoremap * *zz
 nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
 
-" I want * to display all matches w/o cursor movement
+" Display all matches w/o cursor movement
 nnoremap * :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
+" Used in combination with `*` to replace highlighted text
+nnoremap • :%s//
 " Press Space to turn off highlighting and clear any message already
 " displayed.
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
