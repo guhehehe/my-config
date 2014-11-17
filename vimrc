@@ -113,7 +113,7 @@ inoremap ¬ <C-o>A
 inoremap <M-l> <C-o>A
 
 " Toggle between relative line number and absolute number.
-nmap ≈ :call NumberToggle()<cr>
+nmap <leader>x :call NumberToggle()<cr>
 function! NumberToggle()
     if(&relativenumber == 1)
         set relativenumber!
@@ -125,7 +125,7 @@ function! NumberToggle()
 endfunc
 
 " Toggle between relative line number and absolute number.
-nmap ç :call ColorColumnToggle()<cr>
+nmap <leader>c :call ColorColumnToggle()<cr>
 function! ColorColumnToggle()
     if(&colorcolumn == 80)
         set colorcolumn=0
@@ -164,9 +164,6 @@ nmap <C-m> gt
 nmap <silent> <leader>ev :e ~/.vimrc<CR>
 nmap <silent> <leader>sv :so ~/.vimrc<CR>
 
-" Toggle indentLines
-nmap <C-i> :IndentLinesToggle<CR>
-
 " ctags commands
 " nmap <C-c>t :tags /Users/hegu/
 
@@ -193,6 +190,9 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 " indentLine commands
 """"""""""""""""""""""""""""""""
 " See https://github.com/Yggdroot/indentLine for details.
+
+" Toggle indentLines
+nmap <leader>i :IndentLinesToggle<CR>
 
 let g:indentLine_indentLevel = 10
 let g:indentLine_color_term = 237
