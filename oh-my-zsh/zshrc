@@ -89,32 +89,83 @@ function show_git_prompt() {
     _u="$FX[reset]$FG[009]+"          # Untracked files
     _r="$FX[reset]$FG[130]R"          # Rename
     _d="$FX[reset]$FG[009]D"          # Deletion
+    _n="$FX[reset]$FG[220]A"          # New file
     _o="$FX[reset]$FG[244]$FX[bold]|" # Status delimiter
     _b="$FX[reset]$FG[136]$FX[bold]"  # Branch
     _g="$FX[reset]$FG[130]$FX[bold]"  # git
+    _a="$FX[reset]$FG[064]"           # Commits ahead
+    _h="$FX[reset]$FG[009]"           # Commtis behind
 
+    # Get the current branch
     _branch="$(command git rev-parse --abbrev-ref HEAD 2> /dev/null)"
+
+    # Get the current status
     _statuses="$(command git status --porcelain 2> /dev/null |\
         awk '{print $1}' | uniq)"
+
+    # Get commits ahead/behind
+    _behind="$(command git rev-list --left-only @{u}... 2> /dev/null | wc -l)"
+    _ahead="$(command git rev-list --right-only @{u}... 2> /dev/null | wc -l)"
+
+    # Format the status
     _statuses=("${(f)_statuses}")   # Split new lines
     for _stat in ${_statuses}; do
         _status="${_status}${_stat}"
     done
+    if [[ "${_status}" == *"??"* ]]; then
+        if [[ -z "${_pretty_stat}" ]]; then
+            _pretty_stat="${_pretty_stat}${_u}"
+        else
+            _pretty_stat="${_pretty_stat}${_o}${_u}"
+        fi
+    fi
+    if [[ "${_status}" == *M* ]]; then
+        if [[ -z "${_pretty_stat}" ]]; then
+            _pretty_stat="${_pretty_stat}${_m}"
+        else
+            _pretty_stat="${_pretty_stat}${_o}${_m}"
+        fi
+    fi
+    if [[ "${_status}" == *D* ]]; then
+        if [[ -z "${_pretty_stat}" ]]; then
+            _pretty_stat="${_pretty_stat}${_d}"
+        else
+            _pretty_stat="${_pretty_stat}${_o}${_d}"
+        fi
+    fi
+    if [[ "${_status}" == *R* ]]; then
+        if [[ -z "${_pretty_stat}" ]]; then
+            _pretty_stat="${_pretty_stat}${_r}"
+        else
+            _pretty_stat="${_pretty_stat}${_o}${_r}"
+        fi
+    fi
+    if [[ "${_status}" == *A* ]]; then
+        if [[ -z "${_pretty_stat}" ]]; then
+            _pretty_stat="${_pretty_stat}${_n}"
+        else
+            _pretty_stat="${_pretty_stat}${_o}${_n}"
+        fi
+    fi
 
+    # Format commits ahead/behind
+    if [[ ${_ahead} -ne 0 ]]; then
+        _commit="${_a}↑${FX[reset]}${_ahead}${FX[reset]}"
+    fi
+    if [[ ${_behind} -ne 0 ]]; then
+        _commit="${_h}↓${FX[reset]}${_behind}${FX[reset]}"
+    fi
+
+    # Format git prompt
     if [[ ! -z ${_branch} ]]; then
         git_prompt="${_g}git:(${_b}${_branch}${_g})"
     fi
-    if [[ "${_status}" == *"??"* ]]; then
-        git_prompt="${git_prompt}${_o}${_u}"
+    if [[ ! -z ${_pretty_stat} ]]; then
+        _length=${#_pretty_stat}
+        git_prompt="${git_prompt}(${_pretty_stat}${_g})"
     fi
-    if [[ "${_status}" == *M* ]]; then
-        git_prompt="${git_prompt}${_o}${_m}"
-    fi
-    if [[ "${_status}" == *D* ]]; then
-        git_prompt="${git_prompt}${_o}${_d}"
-    fi
-    if [[ "${_status}" == *R* ]]; then
-        git_prompt="${git_prompt}${_o}${_r}"
+    if [[ ! -z ${_commit} ]]; then
+        git_prompt="${git_prompt}(${_commit}${_g})"
     fi
 
     echo ${git_prompt}
