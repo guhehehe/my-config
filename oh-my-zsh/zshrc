@@ -93,8 +93,8 @@ function show_git_prompt() {
     _o="$FX[reset]$FG[244]$FX[bold]|" # Status delimiter
     _b="$FX[reset]$FG[136]$FX[bold]"  # Branch
     _g="$FX[reset]$FG[130]$FX[bold]"  # git
-    _a="$FX[reset]$FG[064]"           # Commits ahead
-    _h="$FX[reset]$FG[009]"           # Commtis behind
+    _a="$FX[reset]$FG[064]$FX[bold]"  # Commits ahead
+    _h="$FX[reset]$FG[009]$FX[bold]"  # Commtis behind
 
     # Get the current branch
     _branch="$(command git rev-parse --abbrev-ref HEAD 2> /dev/null)"
