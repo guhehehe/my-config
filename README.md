@@ -79,3 +79,42 @@ UltiSnips ships many useful snippets, they are are located in
 ## `envs`
 Currently contains two files: `postactivate` and `postdeactivate`, used for
 setting up PS1 on virtualenvwrapper activation and deactivation.
+
+
+# About The Colors, Fonts, Sizes And All
+It is necessary to tweak a little bit to make everything lined up. I need to
+set the font and adjust the size as well as the vertical and horizontal spaces
+to make all the unicode special characters looks just right in both Vim and
+the terminal. I've been experienting for quite a while to figure out the best
+combination of font and all kinds of spaces. Here's what it is.
+
+I didn't test the configuration on many different OSes with various settings,
+since I only use Mac OSX and Ubuntu 12.10. Also because I've been using Mac
+99% of the time lately, I didn't bother to make every setting work on my Linux
+box. To get everything work, you need: Mac, MacVim 7.4+, iTerm2 with xterm-256
+color terminal type, zsh with oh-my-zsh plugin.
+
+_**Note:** Everything is based on 256 colors._
+
+First you need to use 256-jungle color scheme for your Vim. The scheme file
+can be found in this repo. Put it to the right place.
+
+Put the fabulous theme and the zshrc you found in this repo in the right place
+on your local machine (actually the only thing needed in zshrc is the
+`show_git_prompt` funtion, so you can just copy and paste that function to
+your .zshrc.)
+
+Install the Solarized color scheme for iTerm2 (google solarized iterm2 should
+take care of this).
+
+Now you should have a better looking terminal and Vim color scheme.
+
+I also installed powerline on Vim, and the font and size settings make the
+powerline status line looks messy. After tweaking, I came up with these
+settings, which should make powerline looks better:
+
+- iTerm regular font: 14pt Dejavu San Mono for Powerline.
+- iTerm Non-ASCII font: 15pt Literation Mono for Powerline.
+- Set horizontal space to .9, vertical to .95.
+![Vim Screenshot](/images/vim.png)
+![Terminal Screenshot](/images/terminal.png)
