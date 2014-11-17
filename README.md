@@ -130,20 +130,20 @@ over a ssh tunel.
 turn Remote Login on.
 * Instal sshfs on the virtual machine and setup something.
 
-```shell
-    sudo apt-get install sshfs
-    sudo adduser $USER fuse
-```
+    ```shell
+        sudo apt-get install sshfs
+        sudo adduser $USER fuse
+    ```
 
-Then enable user_allow_other in /etc/fuse.conf
+    Then enable user_allow_other in /etc/fuse.conf
 
-If that doesn't work, see if root group owns /dev/fuse, if not, do:
+    If that doesn't work, see if root group owns /dev/fuse, if not, do:
 
-```shell
-    sudo chown root:fuse /dev/fuse
-```
+    ```shell
+        sudo chown root:fuse /dev/fuse
+    ```
 
-And ake sure the permission is 660
+    And ake sure the permission is 660
 
 * Mount a share: `sshfs -o allow_other $USER@$HOST:src ~/src`
 * Unmount a share: `fusermount -u ~/src`
