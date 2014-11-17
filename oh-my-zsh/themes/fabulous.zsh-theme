@@ -3,7 +3,7 @@
 
 _CBASE="$FX[reset]$FG[244]$FX[bold]"
 _CNAME="$FX[reset]$FG[024]$FX[bold]"
-_CAT="$FX[reset]$FG[009]"
+_CAT="$FX[reset]$FG[000]"
 _CHOST="$FX[reset]$FG[064]$FX[bold]"
 _CPATH="$FX[reset]$FG[248]$FX[bold]"
 _CDATE="$FX[reset]$FG[136]$FX[bold]"
