@@ -82,6 +82,7 @@ setting up PS1 on virtualenvwrapper activation and deactivation.
 
 
 # About The Colors, Fonts, Sizes And All
+
 It is necessary to tweak a little bit to make everything lined up. I need to
 set the font and adjust the size as well as the vertical and horizontal spaces
 to make all the unicode special characters looks just right in both Vim and
@@ -118,3 +119,31 @@ settings, which should make powerline looks better:
 - Set horizontal space to .9, vertical to .95.
 ![Vim Screenshot](/images/vim.png)
 ![Terminal Screenshot](/images/terminal.png)
+
+# Virtual Machine And SSH And So On
+
+## File system mount
+
+This enables the OS in your virtual machine to talk to your local file system
+over a ssh tunel.
+* Make sure your Mac allows remote login: go to system preference->sharing,
+turn Remote Login on.
+* Instal sshfs on the virtual machine and setup something.
+
+```shell
+    sudo apt-get install sshfs
+    sudo adduser $USER fuse
+```
+
+Then enable user_allow_other in /etc/fuse.conf
+
+If that doesn't work, see if root group owns /dev/fuse, if not, do:
+
+```shell
+    sudo chown root:fuse /dev/fuse
+```
+
+And ake sure the permission is 660
+
+* Mount a share: `sshfs -o allow_other $USER@$HOST:src ~/src`
+* Unmount a share: `fusermount -u ~/src`
