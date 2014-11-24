@@ -129,10 +129,12 @@ nmap <leader>c :call ColorColumnToggle()<cr>
 function! ColorColumnToggle()
     if(&colorcolumn == 80)
         set colorcolumn=0
-        echo "color column is off"
+        set textwidth=0
+        echo "color column is off, text wrapping is off"
     else
         set colorcolumn=80
-        echo "color column is on"
+        set textwidth=80
+        echo "color column is on, text wrapping is on (set to 80)"
     endif
 endfunc
 

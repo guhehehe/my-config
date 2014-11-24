@@ -1,8 +1,11 @@
 #!/bin/bash
 # This hook is sourced after every virtualenv is activated.
 
+_CP="$FX[reset]$FG[130]$FX[bold]"
+_CE="$FX[reset]$FG[136]$FX[bold]"
+
 if [ ! -z "$ZSH_VERSION" ]; then
     PS1="$_OLD_VIRTUAL_PS1"
     _OLD_RPROMPT="$PROMPT"
-    PROMPT="$PROMPT(`basename \"$VIRTUAL_ENV\"`) "
+    PROMPT="${PROMPT}${_CP}(${_CE}`basename ${VIRTUAL_ENV}`${_CP})${FX[reset]} "
 fi
