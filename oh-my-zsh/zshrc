@@ -67,6 +67,19 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 
 #####################################################
+#  Scala setting
+#####################################################
+export SCALA_HOME=/opt/scala
+export PATH=$PATH:$SCALA_HOME/bin
+
+
+#####################################################
+#  csshX setting
+#####################################################
+export PATH=$PATH:/opt/csshx
+
+
+#####################################################
 # iDefined settings
 #####################################################
 # Useful aliases
@@ -75,6 +88,26 @@ alias vi='/Applications/MacVim.app/Contents/MacOS/Vim'
 alias vim='vi'
 alias ctags='/usr/local/bin/ctags'
 alias ls='ls --color=always'
+alias mvn_eclipse='mvn eclipse:eclipse -DdownloadSources=true -DdownloadJavadocs=true'
+alias mvn_update_deps='mvn versions:use-releases -DgenerateBackupPoms=false && mvn versions:use-latest-releases -DgenerateBackupPoms=false'
+alias mvn_release='mvn -Dmaven.javadoc.skip=true release:prepare release:perform -B'
+alias ip=ipython
+
+bindkey "^R" history-incremental-search-backward
+
+# These 3 lines set up the search order for host name completion:
+# ~/.ssh/config goes first, then ~/.ssh/known_hosts
+[ -f ~/.ssh/config ] && : ${(A)ssh_config_hosts:=${${${${(@M)${(f)"$(<~/.ssh/config)"}:#Host *}#Host }:#*\**}:#*\?*}}
+[ -f ~/.ssh/known_hosts ] && : ${(A)ssh_known_hosts:=${${${(f)"$(<$HOME/.ssh/known_hosts)"}%%\ *}%%,*}}
+zstyle ':completion:*:*:*' hosts $ssh_config_hosts $ssh_known_hosts
+
+function init_java_project {
+    mkdir -p src/main/java > /dev/null 2>&1
+    mkdir -p src/test/java > /dev/null 2>&1
+    mkdir -p src/test/resources > /dev/null 2>&1
+    mkdir target > /dev/null 2>&1
+
+}
 
 export CLICOLOR=YES
 
@@ -93,8 +126,8 @@ function show_git_prompt() {
     _o="$FX[reset]$FG[244]$FX[bold]|" # Status delimiter
     _b="$FX[reset]$FG[136]$FX[bold]"  # Branch
     _g="$FX[reset]$FG[130]$FX[bold]"  # git
-    _a="$FX[reset]$FG[064]"           # Commits ahead
-    _h="$FX[reset]$FG[009]"           # Commtis behind
+    _a="$FX[reset]$FG[064]$FX[bold]"  # Commits ahead
+    _h="$FX[reset]$FG[009]$FX[bold]"  # Commtis behind
 
     # Get the current branch
     _branch="$(command git rev-parse --abbrev-ref HEAD 2> /dev/null)"
@@ -170,3 +203,9 @@ function show_git_prompt() {
 
     echo ${git_prompt}
 }
+
+
+#####################################################
+# work settings
+#####################################################
+alias cssh-hadoop-slave="csshx hadoop-s01 hadoop-s02 hadoop-s03 hadoop-s04 hadoop-s05 hadoop-s06"

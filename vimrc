@@ -20,6 +20,8 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/syntastic'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'Raimondi/delimitMate'
 
 " UltiSnips
 Plugin 'SirVer/ultisnips'      " Track the engine.
@@ -33,6 +35,7 @@ filetype plugin indent on      " required
 """"""""""""""""""""""""""""""""
 " global setup
 """"""""""""""""""""""""""""""""
+let g:wrap_position = 120
 syntax enable
 
 if has('gui_running')
@@ -77,8 +80,8 @@ set ignorecase           " Together with smartcase to make search case
 set smartcase            " insensitive if search term is all lowercase.
 set visualbell           " don't beep
 set noerrorbells         " don't beep
-set textwidth=79
-set colorcolumn=80
+let &textwidth = wrap_position - 1
+let &colorcolumn = wrap_position
 set pastetoggle=<F2>
 set laststatus=2
 set encoding=utf-8
@@ -88,25 +91,26 @@ set termencoding=utf-8
 let mapleader=","
 
 " Mapping with alt key
-" <M-h> ˙
-imap ˙ ()<Esc>i
-imap <M-h> ()<Esc>i
-
-" <M-j> ∆
-imap ∆ []<Esc>i
-imap <M-j> []<Esc>i
-
-" <M-k> ˚
-imap ˚ {}<Esc>i
-imap <M-k> {}<Esc>i
-
-" <M-f> ƒ
-imap ƒ ''<Esc>i
-imap <M-f> ''<Esc>i
-
-" <M-d> ∂
-imap ∂ ""<Esc>i
-imap <M-d> ""<Esc>i
+" Deprecated
+" " <M-h> ˙
+" imap ˙ ()<Esc>i
+" imap <M-h> ()<Esc>i
+"
+" " <M-j> ∆
+" imap ∆ []<Esc>i
+" imap <M-j> []<Esc>i
+"
+" " <M-k> ˚
+" imap ˚ {}<Esc>i
+" imap <M-k> {}<Esc>i
+"
+" " <M-f> ƒ
+" imap ƒ ''<Esc>i
+" imap <M-f> ''<Esc>i
+"
+" " <M-d> ∂
+" imap ∂ ""<Esc>i
+" imap <M-d> ""<Esc>i
 
 " <M-l> ¬
 inoremap ¬ <C-o>A
@@ -127,14 +131,14 @@ endfunc
 " Toggle between relative line number and absolute number.
 nmap <leader>c :call ColorColumnToggle()<cr>
 function! ColorColumnToggle()
-    if(&colorcolumn == 80)
-        set colorcolumn=0
-        set textwidth=0
+    if(&colorcolumn == g:wrap_position)
+        let &colorcolumn = 0
+        let &textwidth = 0
         echo "color column is off, text wrapping is off"
     else
-        set colorcolumn=80
-        set textwidth=80
-        echo "color column is on, text wrapping is on (set to 80)"
+        let &colorcolumn = g:wrap_position
+        let &textwidth = g:wrap_position - 1
+        echo "color column is on, text wrapping is on (set to" g:wrap_position ")"
     endif
 endfunc
 
@@ -171,6 +175,9 @@ nmap <silent> <leader>sv :so ~/.vimrc<CR>
 
 nnoremap ; :
 
+" wrapping line at column 120
+nnoremap <leader>b 0120lF<space>xi<CR><Esc>
+
 " zz lets the cursor to be placed in the middle of the screen
 nnoremap n nzz
 nnoremap N Nzz
@@ -195,6 +202,10 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 " Toggle indentLines
 nmap <leader>i :IndentLinesToggle<CR>
+
+" Stop rendering the greek symbols for tex files.
+let g:indentLine_fileTypeExclude = ['tex']
+au Filetype tex setlocal conceallevel=2
 
 let g:indentLine_indentLevel = 10
 let g:indentLine_color_term = 237
@@ -295,3 +306,16 @@ let g:UltiSnipsEditSplit="vertical"
 
 let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
 let g:UltiSnipsUsePythonVersion=2
+
+
+""""""""""""""""""""""""""""""""
+" syntastic settings
+""""""""""""""""""""""""""""""""
+" Disable auto check for tex.
+let g:syntastic_mode_map = {"passive_filetypes": ["tex", "java", "scala"]}
+
+
+""""""""""""""""""""""""""""""""
+" delimitMate settings
+""""""""""""""""""""""""""""""""
+let delimitMate_expand_cr = 2
