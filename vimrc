@@ -194,6 +194,12 @@ nnoremap • :%s//
 " displayed.
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
+" copy & replace current word
+nnoremap <leader>y lbvey
+nnoremap <leader>p lbvep
+nnoremap <leader>Y lBvEy
+nnoremap <leader>P lBvEp
+
 
 """"""""""""""""""""""""""""""""
 " indentLine commands
