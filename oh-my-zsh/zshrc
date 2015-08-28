@@ -366,13 +366,13 @@ function grebase() {
 
 function gbranch() {
     dry_run=false
-    flag="-vv"
+    flag="vv"
 
     while [ "$1" != "" ]
     do
         case $1 in
             "-m" | "--merged")
-                flag="--merged"
+                flag="-merged"
                 ;;
             "-b" | "--brief")
                 flag=""
