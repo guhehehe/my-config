@@ -84,14 +84,16 @@ export PATH=$PATH:/opt/csshx
 #####################################################
 # Useful aliases
 # Make MacVim default vim
-alias vi='/Applications/MacVim.app/Contents/MacOS/Vim'
-alias vim='vi'
-alias ctags='/usr/local/bin/ctags'
-alias ls='ls --color=always'
-alias mvn_eclipse='mvn eclipse:eclipse -DdownloadSources=true -DdownloadJavadocs=true'
-alias mvn_update_deps='mvn versions:use-releases -DgenerateBackupPoms=false && mvn versions:use-latest-releases -DgenerateBackupPoms=false'
-alias mvn_release='mvn -Dmaven.javadoc.skip=true release:prepare release:perform -B'
+alias vi="/Applications/MacVim.app/Contents/MacOS/Vim"
+alias vim="vi"
+alias ctags="/usr/local/bin/ctags"
+alias ls="ls --color=always"
+alias mvn_eclipse="mvn eclipse:eclipse -DdownloadSources=true -DdownloadJavadocs=true"
+alias mvn_resolve_deps="mvn dependency:sources -Dclassifier=javadoc"
+alias mvn_update_deps="mvn versions:use-releases -DgenerateBackupPoms=false && mvn versions:use-latest-releases -DgenerateBackupPoms=false"
+alias mvn_release="mvn -Dmaven.javadoc.skip=true release:prepare release:perform -B"
 alias ip=ipython
+alias zcat="gzcat"
 
 bindkey "^R" history-incremental-search-backward
 
@@ -204,8 +206,208 @@ function show_git_prompt() {
     echo ${git_prompt}
 }
 
+function gpull() {
+    branch="$(git rev-parse --abbrev-ref HEAD)"
+    dry_run=false
+
+    while [ "$1" != "" ]
+    do
+        case $1 in
+            "-d" | "--dry-run")
+                dry_run=true
+                ;;
+            *)
+                echo "Unknown argument: $1"
+                return 1
+                ;;
+        esac
+        shift
+    done
+
+    cmd="git pull origin $branch"
+
+    if [ $dry_run = true ]; then
+        echo $cmd
+        return
+    fi
+
+    echo $cmd
+    if [ $dry_run = true ]; then
+        return
+    fi
+
+    eval $cmd
+}
+
+function gpush() {
+    branch="$(git rev-parse --abbrev-ref HEAD)"
+    dry_run=false
+
+    while [ "$1" != "" ]
+    do
+        case $1 in
+            "-f" | "--force")
+                branch="+$branch"
+                ;;
+            "-d" | "--dry-run")
+                dry_run=true
+                ;;
+            *)
+                echo "Unknown argument: $1"
+                return 1
+                ;;
+        esac
+        shift
+    done
+
+    cmd="git push origin $branch"
+
+    if [ $dry_run = true ]; then
+        echo $cmd
+        return
+    fi
+
+    echo $cmd
+    if [ $dry_run = true ]; then
+        return
+    fi
+
+    eval $cmd
+}
+
+function gstat() {
+    dry_run=false
+    flag=""
+
+    while [ "$1" != "" ]
+    do
+        case $1 in
+            "-s" | "--short")
+                flag="sb$flag"
+                ;;
+            "-d" | "--dry-run")
+                dry_run=true
+                ;;
+            *)
+                echo "Unknown argument: $1"
+                return 1
+                ;;
+        esac
+        shift
+    done
+
+    if [ "$flag" != "" ]; then
+        flag="-$flag"
+    fi
+
+    cmd="git status $flag"
+
+    if [ $dry_run = true ]; then
+        echo $cmd
+        return
+    fi
+
+    echo $cmd
+    if [ $dry_run = true ]; then
+        return
+    fi
+
+    eval $cmd
+}
+
+function grebase() {
+    dry_run=false
+    non_interactive=false
+    branch="release"
+    flag=""
+
+    while [ "$1" != "" ]
+    do
+        case $1 in
+            "-n" | "--non-interactive")
+                non_interactive=true
+                ;;
+            "-d" | "--dry-run")
+                dry_run=true
+                ;;
+            *)
+                if [ "$2" -ne "" ]; then
+                    echo "Unknown argument: $1"
+                    return 1
+                fi
+                branch=$1
+                ;;
+        esac
+        shift
+    done
+
+    if [ $non_interactive = false ]; then
+        flag="${flag}i"
+    fi
+
+    if [ "$flag" != "" ]; then
+        flag="-$flag"
+    fi
+
+    cmd="git fetch origin $branch; git rebase $flag $branch"
+
+    if [ $dry_run = true ]; then
+        echo $cmd
+        return
+    fi
+
+    echo $cmd
+    if [ $dry_run = true ]; then
+        return
+    fi
+
+    eval $cmd
+}
+
+function gbranch() {
+    dry_run=false
+    flag="-vv"
+
+    while [ "$1" != "" ]
+    do
+        case $1 in
+            "-m" | "--merged")
+                flag="--merged"
+                ;;
+            "-b" | "--brief")
+                flag=""
+                ;;
+            "-d" | "--dry-run")
+                dry_run=true
+                ;;
+            *)
+                echo "Unknown argument: $1"
+                return 1
+                ;;
+        esac
+        shift
+    done
+
+    if [ "$flag" != "" ]; then
+        flag="-$flag"
+    fi
+
+    cmd="git branch $flag"
+
+    echo $cmd
+    if [ $dry_run = true ]; then
+        return
+    fi
+
+    eval $cmd
+}
+
+alias gdiff="git diff"
+
 
 #####################################################
 # work settings
 #####################################################
-alias cssh-hadoop-slave="csshx hadoop-s01 hadoop-s02 hadoop-s03 hadoop-s04 hadoop-s05 hadoop-s06"
+alias cssh-hadoop-slave="csshx hadoop-s11 hadoop-s12 hadoop-s13 hadoop-s14 hadoop-s15 hadoop-s16"
+alias cssh-traffic="csshx traffic-01 traffic-02 traffic-03 traffic-04 traffic-05"
+alias cssh-api-internal="csshx api-internal-01 api-internal-04 api-internal-05 api-internal-06"

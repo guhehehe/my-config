@@ -22,6 +22,9 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/syntastic'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'Raimondi/delimitMate'
+Plugin 'MattesGroeger/vim-bookmarks'
+Plugin 'Shougo/unite.vim'
+Plugin 'tpope/vim-fugitive.git'
 
 " UltiSnips
 Plugin 'SirVer/ultisnips'      " Track the engine.
@@ -195,10 +198,10 @@ nnoremap • :%s//
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 " copy & replace current word
-nnoremap <leader>y lbvey
-nnoremap <leader>p lbvep
-nnoremap <leader>Y lBvEy
-nnoremap <leader>P lBvEp
+nmap <leader>y lbvey
+nmap <leader>p lbvep,y
+nmap <leader>Y lBvEy
+nmap <leader>P lBvEp,y
 
 
 """"""""""""""""""""""""""""""""
@@ -272,6 +275,7 @@ nmap <C-t>. :NERDTreeCWD<CR>
 " ctrlp commands
 """"""""""""""""""""""""""""""""
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_match_window = 'results:30'
 let g:ctrlp_max_files=0
 
 
@@ -318,7 +322,7 @@ let g:UltiSnipsUsePythonVersion=2
 " syntastic settings
 """"""""""""""""""""""""""""""""
 " Disable auto check for tex.
-let g:syntastic_mode_map = {"passive_filetypes": ["tex", "java", "scala"]}
+let g:syntastic_mode_map = {"passive_filetypes": ["tex", "java", "scala", "html"]}
 
 
 """"""""""""""""""""""""""""""""
