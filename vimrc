@@ -170,6 +170,10 @@ nmap <M-0> O<Esc>j
 nmap <C-n> gT
 nmap <C-m> gt
 
+" remove all the way down/up to the first empty line (inclusive)
+nmap <leader>d d}dd
+nmap <leader>D d{dd
+
 nmap <silent> <leader>ev :e ~/.vimrc<CR>
 nmap <silent> <leader>sv :so ~/.vimrc<CR>
 
