@@ -180,6 +180,9 @@ nmap <silent> <leader>sv :so ~/.vimrc<CR>
 " ctags commands
 " nmap <C-c>t :tags /Users/hegu/
 
+noremap <M-p> :CtrlP ~/git/linqia<CR>
+noremap π :CtrlP ~/git/linqia<CR>
+
 nnoremap ; :
 
 " wrapping line at column 120
@@ -279,16 +282,16 @@ nmap <C-t>. :NERDTreeCWD<CR>
 " ctrlp commands
 """"""""""""""""""""""""""""""""
 set runtimepath^=~/.vim/bundle/ctrlp.vim
-let g:ctrlp_match_window = 'results:30'
-let g:ctrlp_max_files=0
+let g:ctrlp_match_window = "results:30"
+let g:ctrlp_max_files = 0
 
 
 """"""""""""""""""""""""""""""""
 " tagbar commands
 """"""""""""""""""""""""""""""""
 nmap <C-b> :TagbarToggle<CR>
-let g:tagbar_autofocus=1      " Make tagbar get focused when it is fired up.
-let g:tagbar_show_linenumbers=1
+let g:tagbar_autofocus = 1      " Make tagbar get focused when it is fired up.
+let g:tagbar_show_linenumbers = 1
 set updatetime=0
 
 
@@ -303,7 +306,7 @@ syn match Identifier " self\."
 """"""""""""""""""""""""""""""""
 set rtp+=~/.vim/bundle/powerline/bindings/vim
 
-let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_autoclose_preview_window_after_completion = 1
 
 
 """"""""""""""""""""""""""""""""
